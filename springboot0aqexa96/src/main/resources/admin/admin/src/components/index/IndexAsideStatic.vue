@@ -38,9 +38,9 @@
 							<i :style="verticalStyle2[isCollapse?'close':'open'].menu.one.icon.default" class="el-icon-menu" :class="icons[index]"></i>
 							<span :style="verticalStyle2[isCollapse?'close':'open'].menu.one.title.default" slot="title">{{menu.menu + (verticalFlag ? '管理' : '')}}</span>
 						</template>
-						<el-menu-item v-for="(child,sort) in menu.child" :key="sort" :index="'/'+child.tableName" @click="menuHandler(child.tableName)">{{ child.menu }}</el-menu-item>
+						<el-menu-item v-for="(child,sort) in menu.child" :key="sort" :index="'/' + child.tableName" @click="menuHandler(child.tableName)" v-if="child.menu !== '车辆保险' && child.menu !== '保险类型'">{{ child.menu }}</el-menu-item>
 					</el-submenu>
-					<el-menu-item v-if="menu.child.length <= 1 && verticalIsMultiple" class="other" popper-class="other" :style="verticalStyle2[isCollapse?'close':'open'].menu.one.box.default" @click="menuHandler(menu.child[0].tableName)" :index="'/'+menu.child[0].tableName">
+					<el-menu-item v-if="menu.child.length <= 1 && verticalIsMultiple && menu.child[0].menu !== '车辆保险' && menu.child[0].menu !== '保险类型'" class="other" popper-class="other" :style="verticalStyle2[isCollapse?'close':'open'].menu.one.box.default" @click="menuHandler(menu.child[0].tableName)" :index="'/' + menu.child[0].tableName">
 						<div class="el-tooltip">
 							<i :style="verticalStyle2[isCollapse?'close':'open'].menu.one.icon.default" class="el-icon-menu" :class="icons[index]"></i>
 							<span :style="verticalStyle2[isCollapse?'close':'open'].menu.one.title.default" slot="title">{{menu.child[0].menu + (verticalFlag ? '管理' : '')}}</span>

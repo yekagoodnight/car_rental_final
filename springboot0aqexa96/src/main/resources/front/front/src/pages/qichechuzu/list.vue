@@ -77,10 +77,7 @@
 			<div class="list">
 				<div class="index-pv1">
 					<div v-for="(item, index) in dataList" :key="index" @click.stop="toDetail(item)" class="animation-box">
-						<img class="image" @click.stop="imgPreView(getImageUrl(item.qichetupian))" v-if="item.qichetupian && item.qichetupian.substr(0,4)=='http'&& item.qichetupian.split(',w').length>1" :src="getImageUrl(item.qichetupian)" />
-						<img class="image" @click.stop="imgPreView(getImageUrl(item.qichetupian.split(',')[0]))" v-else-if="item.qichetupian && item.qichetupian.substr(0,4)=='http'" :src="getImageUrl(item.qichetupian.split(',')[0])" />
-						<img class="image" @click.stop="imgPreView(getImageUrl(baseUrl + (item.qichetupian?item.qichetupian.split(',')[0]:'')))" v-else :src="getImageUrl(baseUrl + (item.qichetupian?item.qichetupian.split(',')[0]:''))" />
-						
+						<img class="image" @click.stop="imgPreView(getImageUrl(item.qichetupian))" v-if="item.qichetupian" :src="item.qichetupian" />
 						<div class="name">{{item.zulinbiaoti}}</div>
 						
 						<div class="info-container">
@@ -303,6 +300,7 @@
 				}
 			},
 			getImageUrl(url) {
+				return url;
 				if (!url) {
 					return '';
 				}

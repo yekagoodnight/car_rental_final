@@ -400,7 +400,7 @@
 			// 提交
 			async onSubmit() {
 				if(this.ruleForm.dingdanbianhao){
-					this.ruleForm.dingdanbianhao = String(this.ruleForm.dingdanbianhao)
+					this.ruleForm.dingdanbianhao = String(this.ruleForm.dingdanbianhao)	
 				}
 				
 				this.calculatePrice();
@@ -426,6 +426,7 @@
 						}
 
 
+						this.ruleForm.tianshu && (this.ruleForm.tianshu = Math.ceil(this.ruleForm.tianshu))
 						await this.$http.post(`zulindingdan/${this.ruleForm.id?'update':this.centerType?'save':'add'}`, this.ruleForm).then(async res => {
 							if (res.data.code == 0) {
 								this.$message({

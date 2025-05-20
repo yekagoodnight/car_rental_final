@@ -69,12 +69,10 @@
 						<el-form class="center-preview-pv" ref="sessionForm" :model="sessionForm" :rules="rules" label-width="100px">
 							<el-form-item class="center-item" v-if="userTableName=='yonghu'" label="用户账号" prop="yonghuzhanghao">
 								<el-input v-model="sessionForm.yonghuzhanghao" placeholder="用户账号" :readonly="true">
-									<template slot="prepend"><i class="el-icon-user"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" v-if="userTableName=='yonghu'" label="用户姓名" prop="yonghuxingming">
 								<el-input v-model="sessionForm.yonghuxingming" placeholder="用户姓名" :readonly="!editMode">
-									<template slot="prepend"><i class="el-icon-user-solid"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" v-if="userTableName=='yonghu'" label="性别" prop="xingbie">
@@ -84,12 +82,10 @@
 							</el-form-item>
 							<el-form-item class="center-item" v-if="userTableName=='yonghu'" label="手机" prop="shouji">
 								<el-input v-model="sessionForm.shouji" placeholder="手机" :readonly="!editMode">
-									<template slot="prepend"><i class="el-icon-mobile-phone"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" v-if="userTableName=='yonghu'" label="身份证" prop="shenfenzheng">
 								<el-input v-model="sessionForm.shenfenzheng" placeholder="身份证" :readonly="!editMode">
-									<template slot="prepend"><i class="el-icon-document"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" v-if="userTableName=='yonghu' && editMode" label="头像" prop="touxiang">
@@ -121,17 +117,14 @@
 						<el-form class="center-preview-pv" ref="passwordForm" :model="passwordForm" :rules="passwordRules" label-width="100px">
 							<el-form-item class="center-item" label="原密码" prop="password">
 								<el-input v-model="passwordForm.password" type="password" placeholder="请输入原密码">
-									<template slot="prepend"><i class="el-icon-lock"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" label="新密码" prop="newpassword">
 								<el-input v-model="passwordForm.newpassword" type="password" placeholder="请输入新密码">
-									<template slot="prepend"><i class="el-icon-key"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-item" label="确认密码" prop="repassword">
 								<el-input v-model="passwordForm.repassword" type="password" placeholder="请再次输入新密码">
-									<template slot="prepend"><i class="el-icon-unlock"></i></template>
 								</el-input>
 							</el-form-item>
 							<el-form-item class="center-btn-item">
