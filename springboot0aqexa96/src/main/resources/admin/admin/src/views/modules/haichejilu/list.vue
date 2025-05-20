@@ -201,15 +201,10 @@
 						align="center">
 						<template slot-scope="scope">
 							<div v-if="scope.row.qichetupian" class="image-container">
-								<el-image
-									:src="scope.row.qichetupian && scope.row.qichetupian.substring(0,4)=='http' ? 
-										(scope.row.qichetupian.split(',w').length>1 ? scope.row.qichetupian : scope.row.qichetupian.split(',')[0]) 
-										: $base.url+scope.row.qichetupian.split(',')[0]"
-									:preview-src-list="[scope.row.qichetupian && scope.row.qichetupian.substring(0,4)=='http' ? 
-										(scope.row.qichetupian.split(',w').length>1 ? scope.row.qichetupian : scope.row.qichetupian.split(',')[0]) 
-										: $base.url+scope.row.qichetupian.split(',')[0]]"
+								<img
+									:src="scope.row.qichetupian"
 									style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover; cursor: pointer; border: 1px solid #fff; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);"
-								></el-image>
+								/>
 							</div>
 							<div v-else class="no-image">
 								<i class="el-icon-picture" style="font-size: 16px; color: #909399;"></i>

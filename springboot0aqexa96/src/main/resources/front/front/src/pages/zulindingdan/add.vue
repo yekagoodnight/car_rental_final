@@ -77,8 +77,7 @@
 					></file-upload>
 			</el-form-item>
 			<el-form-item class="add-item" v-else label="汽车图片" prop="qichetupian">
-				<img v-if="ruleForm.qichetupian.substring(0,4)=='http'" class="upload-img" :key="'http-img'" :src="ruleForm.qichetupian.split(',')[0]">
-				<img v-else class="upload-img" v-bind:key="index" v-for="(item,index) in ruleForm.qichetupian.split(',')" :src="baseUrl+item">
+				<img v-if="ruleForm.qichetupian" class="upload-img" :key="'http-img'" :src="ruleForm.qichetupian">
 			</el-form-item>
 			<el-form-item class="add-item" label="租车备注" prop="zuchebeizhu">
 				<el-input v-model="ruleForm.zuchebeizhu" 
@@ -324,7 +323,7 @@
 							continue;
 						}
 						if(o=='qichetupian'){
-							this.ruleForm.qichetupian = obj[o].split(",")[0];
+							this.ruleForm.qichetupian = obj[o];
 							this.ro.qichetupian = true;
 							continue;
 						}
@@ -471,6 +470,7 @@
 				this.$router.go(-1);
 			},
 			qichetupianUploadChange(fileUrls) {
+				console.log(fileUrls);
 				this.ruleForm.qichetupian = fileUrls.replace(new RegExp(this.$config.baseUrl,"g"),"");
 			},
 			getHoursDiff(startTime, endTime) {

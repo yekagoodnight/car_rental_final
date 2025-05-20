@@ -73,8 +73,7 @@
 					></file-upload>
 			</el-form-item>
 			<el-form-item class="add-item" v-else label="汽车图片" prop="qichetupian">
-				<img v-if="ruleForm.qichetupian.substring(0,4)=='http'" class="upload-img" :key="'http'" :src="ruleForm.qichetupian.split(',')[0]">
-				<img v-else class="upload-img" v-bind:key="index" v-for="(item,index) in ruleForm.qichetupian.split(',')" :src="baseUrl+item">
+				<img v-if="ruleForm.qichetupian" class="upload-img" :key="'http'" :src="ruleForm.qichetupian">
 			</el-form-item>
 			<el-form-item class="add-item" label="车商账号" prop="cheshangzhanghao">
 				<el-input v-model="ruleForm.cheshangzhanghao" 
@@ -350,7 +349,7 @@
 							continue;
 						}
 						if(o=='qichetupian'){
-							this.ruleForm.qichetupian = obj[o].split(",")[0];
+							this.ruleForm.qichetupian = obj[o];
 							this.ro.qichetupian = true;
 							continue;
 						}

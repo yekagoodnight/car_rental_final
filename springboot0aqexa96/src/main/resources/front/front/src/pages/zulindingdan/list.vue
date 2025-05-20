@@ -51,9 +51,7 @@
 				<!-- 样式一 -->
 				<div class="list1 index-pv1">
 					<div v-for="(item, index) in dataList" :key="index" @click.stop="toDetail(item)" class="list-item animation-box">
-						<img class="image" @click.stop="imgPreView(item.qichetupian)" v-if="item.qichetupian && item.qichetupian.substr(0,4)=='http'&& item.qichetupian.split(',w').length>1" :src="item.qichetupian" />
-						<img class="image" @click.stop="imgPreView(item.qichetupian.split(',')[0])" v-else-if="item.qichetupian && item.qichetupian.substr(0,4)=='http'" :src="item.qichetupian.split(',')[0]" />
-						<img class="image" @click.stop="imgPreView(baseUrl + (item.qichetupian?item.qichetupian.split(',')[0]:''))" v-else :src="baseUrl + (item.qichetupian?item.qichetupian.split(',')[0]:'')" />
+						<img class="image" v-if="item.qichetupian" :src="item.qichetupian" />
 						<div class="name">{{item.qichechepai}}</div>
 						<div class="time_item">
 							<span class="icon iconfont icon-shijian21"></span>

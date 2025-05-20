@@ -110,12 +110,6 @@
 				<div class="big">
 					<img id="big" :src="swiperBigUrl" class="image">
 				</div>
-				<div class="samll">
-					<div class="swiper3-small-item" v-for="item in detailBanner" :key="item.id">
-						<img v-if="item.substr(0,4)=='http'" :src="item" @click="swiperClick3(item)" class="image">
-						<img v-else :src="baseUrl + item" @click="swiperClick3(baseUrl + item)" class="image">
-					</div>
-				</div>
 			</div>
 
 
@@ -189,19 +183,13 @@
 						this.getSensitiveWords()
 						this.title = this.detail.qichechepai;
 						if(this.detail.qichetupian) {
-							this.detailBanner = this.detail.qichetupian.split(",w").length>1?[this.detail.qichetupian]:this.detail.qichetupian.split(',');
+							this.detailBanner = this.detail.qichetupian
+							this.swiperBigUrl = this.detailBanner
 						}
 						this.$forceUpdate();
 						if(localStorage.getItem('frontToken')){
 						}
 
-					}
-					if (this.detailBanner.length) {
-						if (this.detailBanner[0].substr(0,4)=='http') {
-							this.swiperBigUrl = this.detailBanner[0]
-						} else {
-							this.swiperBigUrl = this.baseUrl + this.detailBanner[0]
-						}
 					}
 				});
 			},
