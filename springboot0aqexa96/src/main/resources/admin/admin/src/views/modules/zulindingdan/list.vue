@@ -133,7 +133,7 @@
 								<div class="car-image">
 									<el-image 
 										v-if="scope.row.qichetupian"
-										:src="scope.row.qichetupian" 
+										:src="scope.row.qichetupian"
 										style="width: 60px; height: 60px; border-radius: 5px;"
 										fit="cover"
 										:preview-src-list="[scope.row.qichetupian.substring(0,4)=='http'?scope.row.qichetupian.split(',')[0]:$base.url+scope.row.qichetupian.split(',')[0]]">

@@ -370,63 +370,74 @@
 		position: relative;
 		flex-wrap: wrap;
 		.attr {
-			padding: 10px 0;
-			background: #fff;
+			padding: 20px 25px;
+			margin-bottom: 25px;
+			background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
 			display: flex;
 			width: 100%;
 			position: relative;
 			order: 3;
+			border-radius: 12px;
+			box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+			border: 1px solid rgba(35, 70, 154, 0.1);
 			.info {
 				padding: 10px 0;
-				margin: 0 0 0 10px;
-				background: #fff;
+				margin: 0;
+				background: transparent;
 				flex: 1;
 				display: flex;
 				justify-content: space-between;
 				flex-wrap: wrap;
 				.title-item {
-					padding: 10px;
-					margin: 0 0 10px 0;
-					background: linear-gradient(0.00deg, rgb(145, 177, 255) 0%,rgb(255, 255, 255) 24.428%,rgb(255, 255, 255) 100%);
+					padding: 15px 20px;
+					margin: 0 0 15px 0;
+					background: linear-gradient(180deg, #ffffff 0%, #eef2fd 100%);
 					display: flex;
 					width: 48%;
-					border-color: #25489C80;
-					border-width: 0 0 2px;
+					border-radius: 10px;
+					border-left: 4px solid #23469A;
 					justify-content: space-between;
 					align-items: center;
-					border-style: solid;
+					box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 					.detail-title {
-						color: #333;
-						font-size: 16px;
+						color: #23469A;
+						font-size: 18px;
+						font-weight: 600;
 					}
 				}
 				.item {
-					padding: 10px;
-					margin: 0 0 10px 0;
-					background: linear-gradient(0.00deg, rgb(145, 177, 255) 0%,rgb(255, 255, 255) 24.428%,rgb(255, 255, 255) 100%);
+					padding: 12px 20px;
+					margin: 0 0 15px 0;
+					background: #ffffff;
 					display: flex;
 					width: 48%;
-					border-color: #25489C80;
-					border-width: 0 0 2px;
+					border-radius: 8px;
+					border: 1px solid rgba(35, 70, 154, 0.1);
 					justify-content: flex-start;
 					align-items: center;
-					border-style: solid;
+					box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+					transition: all 0.2s ease;
+					&:hover {
+						box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+						border: 1px solid rgba(35, 70, 154, 0.2);
+					}
 					.lable {
 						padding: 0 10px;
-						color: #000;
+						color: #23469A;
 						white-space: nowrap;
 						width: auto;
-						font-size: 13px;
+						font-size: 15px;
+						font-weight: 500;
 						line-height: 24px;
 						text-align: left;
 						height: auto;
 					}
 					.text {
 						padding: 0 10px;
-						color: #25489C;
+						color: #333;
 						word-break: break-all;
 						flex: 1;
-						font-size: 14px;
+						font-size: 15px;
 						line-height: 24px;
 						height: auto;
 					}
@@ -442,85 +453,90 @@
 					}
 				}
 				.btn_box {
-					padding: 10px 0;
+					padding: 15px 0;
 					display: flex;
 					width: 100%;
 					align-items: center;
 					flex-wrap: wrap;
+					gap: 10px;
+					margin-top: 5px;
+					border-top: 1px dashed rgba(35, 70, 154, 0.15);
+				}
+				.editBtn,
+				.delBtn,
+				.payBtn,
+				.reserveBtn {
+					border: 0;
+					cursor: pointer;
+					border-radius: 6px;
+					padding: 0 20px;
+					margin: 0;
+					outline: none;
+					color: #fff;
+					width: auto;
+					font-size: 14px;
+					line-height: 40px;
+					height: 40px;
+					transition: all 0.2s ease;
 				}
 				.editBtn {
-					border: 0;
-					cursor: pointer;
-					border-radius: 0;
-					padding: 0 10px;
-					margin: 0 5px 0 0;
-					outline: none;
-					color: #fff;
 					background: #007ED0;
-					width: auto;
-					font-size: 14px;
-					line-height: 40px;
-					height: 40px;
-				}
-				.editBtn:hover {
-					opacity: 0.7;
 				}
 				.delBtn {
-					border: 0;
-					cursor: pointer;
-					border-radius: 0;
-					padding: 0 10px;
-					margin: 0 5px 0 0;
-					outline: none;
-					color: #fff;
 					background: #218BD0;
-					width: auto;
-					font-size: 14px;
-					line-height: 40px;
-					height: 40px;
-				}
-				.delBtn:hover {
-					opacity: 0.7;
 				}
 				.payBtn {
-					border: 0;
-					cursor: pointer;
-					border-radius: 0;
-					padding: 0 10px;
-					margin: 0 5px 0 0;
-					outline: none;
-					color: #fff;
 					background: #024DC7;
-					width: auto;
-					font-size: 14px;
-					line-height: 40px;
-					height: 40px;
 				}
-				.payBtn:hover {
-					opacity: 0.7;
+				.reserveBtn {
+					background: #F4E8C7;
+					color: #23469A;
+				}
+				.editBtn:hover,
+				.delBtn:hover,
+				.payBtn:hover,
+				.reserveBtn:hover {
+					opacity: 0.85;
+					transform: translateY(-2px);
+					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 				}
 			}
 		}
 		.swiper3 {
+			margin-top: 32px;
 			background: none;
 			display: flex;
 			width: calc(100% - 200px);
 			align-items: flex-start;
 			height: auto;
 			order: 1;
+			margin-bottom: 25px;
 			.big {
-				border: 0px solid red;
-				margin: 0 20px 0 0;
-				background: #fff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				width: 100%;
-				position: relative;
 				height: 400px;
-				img {
+				background: #fff;
+				border-radius: 16px;
+				overflow: hidden;
+				box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			}
+			#big {
+				display: block;
+				margin: 0 auto;
+				max-width: 90%;
+				max-height: 380px;
+				border-radius: 14px;
+				box-shadow: 0 2px 16px rgba(35,70,154,0.13);
+				border: 3px solid #e0e6f6;
 					object-fit: cover;
-					display: block;
-					width: 100%;
-					height: 100%;
+				background: #f8f9fa;
+				transition: transform 0.3s, box-shadow 0.3s;
 				}
+			#big:hover {
+				transform: scale(1.04);
+				box-shadow: 0 8px 32px rgba(35,70,154,0.18);
 			}
 			.samll {
 				padding: 0 0 100px;

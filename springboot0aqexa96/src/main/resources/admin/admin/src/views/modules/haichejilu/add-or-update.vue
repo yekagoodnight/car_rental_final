@@ -11,16 +11,6 @@
 				<div class="info-row"><span class="info-label">租车时间：</span><span class="info-value">{{ruleForm.zucheshijian}}</span></div>
 				<div class="info-row"><span class="info-label">还车时间：</span><span class="info-value">{{ruleForm.haicheshijian}}</span></div>
 				<div class="info-row"><span class="info-label">还车备注：</span><span class="info-value">{{ruleForm.haichebeizhu}}</span></div>
-				<div class="info-row"><span class="info-label">汽车图片：</span>
-					<span class="info-value">
-						<span v-if="ruleForm.qichetupian">
-							<img v-if="ruleForm.qichetupian.substring(0,4)=='http'&&ruleForm.qichetupian.split(',w').length>1" :src="ruleForm.qichetupian" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-							<img v-else-if="ruleForm.qichetupian.substring(0,4)=='http'" :src="ruleForm.qichetupian.split(',')[0]" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-							<img v-else v-for="(item,index) in ruleForm.qichetupian.split(',')" :key="'qichetupian-img-'+index" :src="$base.url+item" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-						</span>
-						<span v-else>无图片</span>
-					</span>
-				</div>
 				<div class="info-row"><span class="info-label">车商账号：</span><span class="info-value">{{ruleForm.cheshangzhanghao}}</span></div>
 				<div class="info-row"><span class="info-label">用户账号：</span><span class="info-value">{{ruleForm.yonghuzhanghao}}</span></div>
 				<div class="info-row"><span class="info-label">用户姓名：</span><span class="info-value">{{ruleForm.yonghuxingming}}</span></div>
@@ -134,49 +124,6 @@
 									<div style="font-weight: bold; margin-bottom: 5px;">还车备注:</div>
 									<div style="padding: 0 12px; white-space: pre-wrap;">{{ruleForm.haichebeizhu}}</div>
 								</div>
-							</el-form-item>
-						</el-col>
-						<el-col :span="24">
-							<el-form-item class="upload" :label="type!='info'?'汽车图片':''" prop="qichetupian" :class="type=='info'?'textinfo':''">
-								<template v-if="type!='info' && !ro.qichetupian">
-									<file-upload
-										tip="点击上传汽车图片"
-										action="file/upload"
-										:limit="3"
-										:multiple="true"
-										:fileUrls="ruleForm.qichetupian?ruleForm.qichetupian:''"
-										@change="qichetupianUploadChange"
-										:style='{"width":"100%","margin":"0 0 20px"}'
-									></file-upload>
-								</template>
-								<template v-if="type=='info'">
-									<div style="font-size: 14px; line-height: 40px; color: #333;">
-										<div style="font-weight: bold; margin-bottom: 5px;">汽车图片:</div>
-										<div class="images-box" v-if="ruleForm.qichetupian" style="display: flex; flex-wrap: wrap;">
-											<el-image 
-												v-if="ruleForm.qichetupian.substring(0,4)=='http'&&ruleForm.qichetupian.split(',w').length>1" 
-												:src="ruleForm.qichetupian" 
-												:preview-src-list="[ruleForm.qichetupian]"
-												style="width: 120px; height: 120px; border-radius: 10px; object-fit: cover; margin-right: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"
-											></el-image>
-											<el-image 
-												v-else-if="ruleForm.qichetupian.substring(0,4)=='http'" 
-												:src="ruleForm.qichetupian.split(',')[0]" 
-												:preview-src-list="[ruleForm.qichetupian.split(',')[0]]"
-												style="width: 120px; height: 120px; border-radius: 10px; object-fit: cover; margin-right: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"
-											></el-image>
-											<el-image 
-												v-else
-												v-for="(item,index) in ruleForm.qichetupian.split(',')" 
-												:key="index"
-												:src="$base.url+item" 
-												:preview-src-list="[$base.url+item]"
-												style="width: 120px; height: 120px; border-radius: 10px; object-fit: cover; margin-right: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"
-											></el-image>
-										</div>
-										<div v-else>无图片</div>
-									</div>
-								</template>
 							</el-form-item>
 						</el-col>
 						<el-col :span="12">

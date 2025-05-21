@@ -11,16 +11,6 @@
 				<div class="info-row"><span class="info-label">日租金：</span><span class="info-value">{{ruleForm.rizujin}}</span></div>
 				<div class="info-row"><span class="info-label">天数：</span><span class="info-value">{{ruleForm.tianshu}}</span></div>
 				<div class="info-row"><span class="info-label">应付价格：</span><span class="info-value">{{ruleForm.yingfujiage}}</span></div>
-				<div class="info-row"><span class="info-label">汽车图片：</span>
-					<span class="info-value">
-						<span v-if="ruleForm.qichetupian">
-							<img v-if="ruleForm.qichetupian.substring(0,4)=='http'&&ruleForm.qichetupian.split(',w').length>1" :src="ruleForm.qichetupian" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;" key="qichetupian-img1">
-							<img v-else-if="ruleForm.qichetupian.substring(0,4)=='http'" :src="ruleForm.qichetupian.split(',')[0]" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;" key="qichetupian-img2">
-							<img v-else v-for="(item,index) in ruleForm.qichetupian.split(',')" :key="'qichetupian-img-'+index" :src="$base.url+item" width="60" height="60" style="border-radius:8px;object-fit:cover;margin-right:8px;">
-						</span>
-						<span v-else>无图片</span>
-					</span>
-				</div>
 				<div class="info-row"><span class="info-label">租车时间：</span><span class="info-value">{{ruleForm.zucheshijian}}</span></div>
 				<div class="info-row"><span class="info-label">租车备注：</span><span class="info-value">{{ruleForm.zuchebeizhu}}</span></div>
 				<div class="info-row"><span class="info-label">车商账号：</span><span class="info-value">{{ruleForm.cheshangzhanghao}}</span></div>

@@ -95,18 +95,12 @@
 					:data="dataList"
 					v-loading="dataListLoading"
 					@selection-change="selectionChangeHandler"
-					:header-cell-style="{'color':'#333', 'fontWeight':'500', 'fontSize':'13px', 'background-color':'#f5f7fa', 'padding':'8px 0', 'text-align': 'center'}"
-					:cell-style="{'color':'#333', 'fontSize':'13px', 'padding':'8px 0', 'text-align': 'center'}"
+					:header-cell-style="{'color':'#333', 'fontWeight':'600', 'fontSize':'14px', 'background-color':'#f5f7fa', 'padding':'14px 10px', 'text-align': 'center', 'border-bottom': '2px solid #dcdfe6'}"
+					:cell-style="{'color':'#333', 'fontSize':'14px', 'padding':'14px 10px', 'text-align': 'center'}"
 					:fit="true">
-					<el-table-column :resizable='true' type="selection" align="center" width="40"></el-table-column>
-					<el-table-column :resizable='true' :sortable='true' label="序号" type="index" width="40" align="center" :index="indexMethod"></el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="dingdanbianhao"
-						label="订单编号"
-						align="center"
-						width="85">
+					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
+					<el-table-column :resizable='true' :sortable='true' label="序号" type="index" align="center" :index="indexMethod"></el-table-column>
+					<el-table-column :resizable='true' :sortable='true' prop="dingdanbianhao" label="订单编号" align="center">
 						<template slot-scope="scope">
 							<div class="order-info" style="justify-content: center;">
 								<i class="el-icon-tickets" style="color: #409EFF; margin-right: 3px; font-size: 12px;"></i>
@@ -114,50 +108,26 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="qichechepai"
-						label="汽车车牌"
-						align="center"
-						width="75">
+					<el-table-column :resizable='true' :sortable='true' prop="qichechepai" label="汽车车牌" align="center">
 						<template slot-scope="scope">
 							<div class="plate-info" style="justify-content: center;">
 								<span>{{scope.row.qichechepai}}</span>
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="qicheleixing"
-						label="汽车类型"
-						align="center"
-						width="75">
+					<el-table-column :resizable='true' :sortable='true' prop="qicheleixing" label="汽车类型" align="center">
 						<template slot-scope="scope">
 							<el-tag size="mini" type="info" effect="light">{{scope.row.qicheleixing}}</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="pinpai"
-						label="品牌"
-						align="center"
-						width="65">
+					<el-table-column :resizable='true' :sortable='true' prop="pinpai" label="品牌" align="center">
 						<template slot-scope="scope">
 							<div class="brand-info" style="justify-content: center;">
 								<span>{{scope.row.pinpai}}</span>
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="rizujin"
-						label="日租金"
-						align="center"
-						width="60">
+					<el-table-column :resizable='true' :sortable='true' prop="rizujin" label="日租金" align="center">
 						<template slot-scope="scope">
 							<div class="price-info" style="justify-content: center;">
 								<i class="el-icon-money" style="color: #E6A23C; margin-right: 1px; font-size: 12px;"></i>
@@ -165,13 +135,7 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="zucheshijian"
-						label="租车时间"
-						align="center"
-						width="120">
+					<el-table-column :resizable='true' :sortable='true' prop="zucheshijian" label="租车时间" align="center">
 						<template slot-scope="scope">
 							<div class="time-info" style="justify-content: center;">
 								<i class="el-icon-time" style="color: #909399; margin-right: 3px; font-size: 12px;"></i>
@@ -179,13 +143,7 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="haicheshijian"
-						label="还车时间"
-						align="center"
-						width="120">
+					<el-table-column :resizable='true' :sortable='true' prop="haicheshijian" label="还车时间" align="center">
 						<template slot-scope="scope">
 							<div class="time-info" style="justify-content: center;">
 								<i class="el-icon-time" style="color: #909399; margin-right: 3px; font-size: 12px;"></i>
@@ -193,12 +151,7 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column  
-						:resizable='true' 
-						prop="qichetupian" 
-						width="80" 
-						label="汽车图片" 
-						align="center">
+					<el-table-column  :resizable='true' prop="qichetupian" width="80" label="汽车图片" align="center">
 						<template slot-scope="scope">
 							<div v-if="scope.row.qichetupian" class="image-container">
 								<img
@@ -211,13 +164,7 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true'  
-						prop="yonghuzhanghao"
-						label="用户账号"
-						align="center"
-						width="75">
+					<el-table-column :resizable='true' :sortable='true' prop="yonghuzhanghao" label="用户账号" align="center">
 						<template slot-scope="scope">
 							<div class="user-info" style="justify-content: center;">
 								<i class="el-icon-user" style="color: #409EFF; margin-right: 2px; font-size: 12px;"></i>
@@ -225,23 +172,14 @@
 							</div>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						:resizable='true' 
-						:sortable='true' 
-						prop="sfsh" 
-						label="审核状态"
-						align="center"
-						width="70">
+					<el-table-column :resizable='true' :sortable='true' prop="sfsh" label="审核状态" align="center">
 						<template slot-scope="scope">
 							<el-tag v-if="scope.row.sfsh=='否'" type="danger" effect="dark" size="mini">未通过</el-tag>
 							<el-tag v-if="scope.row.sfsh=='待审核'" type="warning" effect="dark" size="mini">待审核</el-tag>
 							<el-tag v-if="scope.row.sfsh=='是'" type="success" effect="dark" size="mini">已通过</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column 
-						width="120" 
-						label="操作" 
-						align="center">
+					<el-table-column width="120" label="操作" align="center">
 						<template slot-scope="scope">
 							<div class="operation-buttons">
 								<el-button type="text" icon="el-icon-view" size="medium" v-if="isAuth('haichejilu','查看')" @click="addOrUpdateHandler(scope.row.id,'info')" class="view-btn" style="color: #409EFF;">查看</el-button>
@@ -602,5 +540,100 @@
 	.main-content .custom-pagination .el-pager li.active {
 		background-color: #409EFF;
 		color: #ffffff;
+	}
+
+	/* 优化表格外观，参照zulindingdan/list.vue */
+	.tables {
+		margin-bottom: 20px;
+		border: none !important;
+		box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.1);
+		border-radius: 12px !important;
+		background: #fff !important;
+		width: 100% !important;
+		font-size: 14px !important;
+	}
+	
+	.el-table__header th {
+		transition: all 0.2s;
+		color: #333;
+		font-weight: 600;
+		font-size: 14px;
+		background-color: #f5f7fa;
+		padding: 12px 8px;
+		text-align: center;
+		border-bottom: 2px solid #dcdfe6;
+	}
+	
+	.el-table__body td {
+		color: #333;
+		font-size: 14px;
+		padding: 12px 8px;
+		text-align: center;
+		border-bottom: 1px solid #ebeef5;
+	}
+
+	.el-table__row {
+		transition: all 0.3s;
+	}
+	.el-table__row:hover {
+		background-color: #f0f5ff !important;
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+		z-index: 2;
+	}
+
+	/* 表格图片样式优化 */
+	.image-container, .no-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 60px;
+		width: 60px;
+		background: #f5f7fa;
+		border-radius: 5px;
+		color: #909399;
+	}
+
+	/* 表格标题和操作区域 */
+	.table-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ebeef5;
+	}
+
+	.table-title {
+		display: flex;
+		align-items: center;
+	}
+
+	.table-actions .el-button {
+		transition: all 0.3s;
+	}
+
+	.table-actions .el-button:hover {
+		transform: rotate(180deg);
+		color: #409EFF !important;
+	}
+
+	/* 分页样式优化 */
+	.custom-pagination {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		transition: all 0.3s;
+	}
+	.custom-pagination:hover {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	@media screen and (max-width: 1200px) {
+		.tables {
+			font-size: 12px !important;
+		}
+		.el-table__header th, .el-table__body td {
+			font-size: 12px !important;
+			padding: 8px 4px !important;
+		}
 	}
 </style>

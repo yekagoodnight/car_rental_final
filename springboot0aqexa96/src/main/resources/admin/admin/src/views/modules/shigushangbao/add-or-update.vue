@@ -1,138 +1,154 @@
 <template>
 	<div class="addEdit-block">
-		<el-form
-			class="add-update-preview"
-			ref="ruleForm"
-			:model="ruleForm"
-			:rules="rules"
-			label-width="180px"
-		>
-			<template >
-				<el-form-item class="input" v-if="type!='info'"  label="订单编号" prop="dingdanbianhao" >
-					<el-input v-model="ruleForm.dingdanbianhao" placeholder="订单编号" clearable  :readonly="ro.dingdanbianhao"></el-input>
+		<template v-if="type=='info'">
+			<div class="info-view">
+				<div class="info-row"><span class="info-label">订单编号：</span><span class="info-value">{{ruleForm.dingdanbianhao}}</span></div>
+				<div class="info-row"><span class="info-label">汽车车牌：</span><span class="info-value">{{ruleForm.qichechepai}}</span></div>
+				<div class="info-row"><span class="info-label">汽车类型：</span><span class="info-value">{{ruleForm.qicheleixing}}</span></div>
+				<div class="info-row"><span class="info-label">品牌：</span><span class="info-value">{{ruleForm.pinpai}}</span></div>
+				<div class="info-row"><span class="info-label">型号：</span><span class="info-value">{{ruleForm.xinghao}}</span></div>
+				<div class="info-row"><span class="info-label">事故时间：</span><span class="info-value">{{ruleForm.shigushijian}}</span></div>
+				<div class="info-row"><span class="info-label">事故地点：</span><span class="info-value">{{ruleForm.shigudidian}}</span></div>
+				<div class="info-row"><span class="info-label">事故类型：</span><span class="info-value">{{ruleForm.shiguleixing}}</span></div>
+				<div class="info-row"><span class="info-label">事故描述：</span><span class="info-value">{{ruleForm.shigumiaoshu}}</span></div>
+				<div class="info-row"><span class="info-label">用户账号：</span><span class="info-value">{{ruleForm.yonghuzhanghao}}</span></div>
+				<div class="info-row"><span class="info-label">用户姓名：</span><span class="info-value">{{ruleForm.yonghuxingming}}</span></div>
+				<el-button @click="back()" style="border: none; cursor: pointer; padding: 0 20px; color: #fff; border-radius: 4px; background: #909399; font-size: 14px; height: 40px; margin-top: 24px;">返回</el-button>
+			</div>
+		</template>
+		<template v-else>
+			<el-form
+				class="add-update-preview"
+				ref="ruleForm"
+				:model="ruleForm"
+				:rules="rules"
+				label-width="180px"
+			>
+				<template >
+					<el-form-item class="input" v-if="type!='info'"  label="订单编号" prop="dingdanbianhao" >
+						<el-input v-model="ruleForm.dingdanbianhao" placeholder="订单编号" clearable  :readonly="ro.dingdanbianhao"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="订单编号" prop="dingdanbianhao" >
+						<el-input v-model="ruleForm.dingdanbianhao" placeholder="订单编号" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="汽车车牌" prop="qichechepai" >
+						<el-input v-model="ruleForm.qichechepai" placeholder="汽车车牌" clearable  :readonly="ro.qichechepai"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="汽车车牌" prop="qichechepai" >
+						<el-input v-model="ruleForm.qichechepai" placeholder="汽车车牌" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="汽车类型" prop="qicheleixing" >
+						<el-input v-model="ruleForm.qicheleixing" placeholder="汽车类型" clearable  :readonly="ro.qicheleixing"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="汽车类型" prop="qicheleixing" >
+						<el-input v-model="ruleForm.qicheleixing" placeholder="汽车类型" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="品牌" prop="pinpai" >
+						<el-input v-model="ruleForm.pinpai" placeholder="品牌" clearable  :readonly="ro.pinpai"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="品牌" prop="pinpai" >
+						<el-input v-model="ruleForm.pinpai" placeholder="品牌" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="型号" prop="xinghao" >
+						<el-input v-model="ruleForm.xinghao" placeholder="型号" clearable  :readonly="ro.xinghao"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="型号" prop="xinghao" >
+						<el-input v-model="ruleForm.xinghao" placeholder="型号" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="date" v-if="type!='info'" label="事故时间" prop="shigushijian" >
+						<el-date-picker
+							value-format="yyyy-MM-dd HH:mm:ss"
+							v-model="ruleForm.shigushijian" 
+							type="datetime"
+							:readonly="ro.shigushijian"
+							placeholder="事故时间"
+						></el-date-picker>
+					</el-form-item>
+					<el-form-item class="input" v-else-if="ruleForm.shigushijian" label="事故时间" prop="shigushijian" >
+						<el-input v-model="ruleForm.shigushijian" placeholder="事故时间" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="事故地点" prop="shigudidian" >
+						<el-input v-model="ruleForm.shigudidian" placeholder="事故地点" clearable  :readonly="ro.shigudidian"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="事故地点" prop="shigudidian" >
+						<el-input v-model="ruleForm.shigudidian" placeholder="事故地点" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="select" v-if="type!='info'"  label="事故类型" prop="shiguleixing" >
+						<el-select :disabled="ro.shiguleixing" v-model="ruleForm.shiguleixing" placeholder="请选择事故类型" >
+							<el-option
+								v-for="(item,index) in shiguleixingOptions"
+								v-bind:key="index"
+								:label="item"
+								:value="item">
+							</el-option>
+						</el-select>
+					</el-form-item>
+					<el-form-item v-else class="input" label="事故类型" prop="shiguleixing" >
+						<el-input v-model="ruleForm.shiguleixing"
+							placeholder="事故类型" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="upload" v-if="type!='info' && !ro.xianchangzhaopian" label="现场照片" prop="xianchangzhaopian" >
+						<file-upload
+							tip="点击上传现场照片"
+							action="file/upload"
+							:limit="3"
+							:multiple="true"
+							:fileUrls="ruleForm.xianchangzhaopian?ruleForm.xianchangzhaopian:''"
+							@change="xianchangzhaopianUploadChange"
+						></file-upload>
+					</el-form-item>
+					<el-form-item class="upload" v-else-if="ruleForm.xianchangzhaopian" label="现场照片" prop="xianchangzhaopian" >
+						<img v-if="ruleForm.xianchangzhaopian.substring(0,4)=='http'&&ruleForm.xianchangzhaopian.split(',w').length>1" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.xianchangzhaopian" width="100" height="100">
+						<img v-else-if="ruleForm.xianchangzhaopian.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.xianchangzhaopian.split(',')[0]" width="100" height="100">
+						<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.xianchangzhaopian.split(',')" :src="$base.url+item" width="100" height="100">
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="车商账号" prop="cheshangzhanghao" >
+						<el-input v-model="ruleForm.cheshangzhanghao" placeholder="车商账号" clearable  :readonly="ro.cheshangzhanghao"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="车商账号" prop="cheshangzhanghao" >
+						<el-input v-model="ruleForm.cheshangzhanghao" placeholder="车商账号" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="用户账号" prop="yonghuzhanghao" >
+						<el-input v-model="ruleForm.yonghuzhanghao" placeholder="用户账号" clearable  :readonly="ro.yonghuzhanghao"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="用户账号" prop="yonghuzhanghao" >
+						<el-input v-model="ruleForm.yonghuzhanghao" placeholder="用户账号" readonly></el-input>
+					</el-form-item>
+					<el-form-item class="input" v-if="type!='info'"  label="用户姓名" prop="yonghuxingming" >
+						<el-input v-model="ruleForm.yonghuxingming" placeholder="用户姓名" clearable  :readonly="ro.yonghuxingming"></el-input>
+					</el-form-item>
+					<el-form-item v-else class="input" label="用户姓名" prop="yonghuxingming" >
+						<el-input v-model="ruleForm.yonghuxingming" placeholder="用户姓名" readonly></el-input>
+					</el-form-item>
+				</template>
+				<el-form-item class="textarea" v-if="type!='info'" label="事故描述" prop="shigumiaoshu" >
+					<el-input
+						style="min-width: 200px; max-width: 600px;"
+						type="textarea"
+						:rows="8"
+						placeholder="事故描述"
+						v-model="ruleForm.shigumiaoshu" >
+					</el-input>
 				</el-form-item>
-				<el-form-item v-else class="input" label="订单编号" prop="dingdanbianhao" >
-					<el-input v-model="ruleForm.dingdanbianhao" placeholder="订单编号" readonly></el-input>
+				<el-form-item v-else-if="ruleForm.shigumiaoshu" label="事故描述" prop="shigumiaoshu" >
+					<span class="text">{{ruleForm.shigumiaoshu}}</span>
 				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="汽车车牌" prop="qichechepai" >
-					<el-input v-model="ruleForm.qichechepai" placeholder="汽车车牌" clearable  :readonly="ro.qichechepai"></el-input>
+				<el-form-item class="btn">
+					<el-button class="btn3"  v-if="type!='info'" type="success" @click="onSubmit">
+						<span class="icon iconfont icon-xihuan"></span>
+						确定
+					</el-button>
+					<el-button class="btn4" v-if="type!='info'" type="success" @click="back()">
+						<span class="icon iconfont icon-xihuan"></span>
+						取消
+					</el-button>
+					<el-button class="btn5" v-if="type=='info'" type="success" @click="back()">
+						<span class="icon iconfont icon-xihuan"></span>
+						返回
+					</el-button>
 				</el-form-item>
-				<el-form-item v-else class="input" label="汽车车牌" prop="qichechepai" >
-					<el-input v-model="ruleForm.qichechepai" placeholder="汽车车牌" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="汽车类型" prop="qicheleixing" >
-					<el-input v-model="ruleForm.qicheleixing" placeholder="汽车类型" clearable  :readonly="ro.qicheleixing"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="汽车类型" prop="qicheleixing" >
-					<el-input v-model="ruleForm.qicheleixing" placeholder="汽车类型" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="品牌" prop="pinpai" >
-					<el-input v-model="ruleForm.pinpai" placeholder="品牌" clearable  :readonly="ro.pinpai"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="品牌" prop="pinpai" >
-					<el-input v-model="ruleForm.pinpai" placeholder="品牌" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="型号" prop="xinghao" >
-					<el-input v-model="ruleForm.xinghao" placeholder="型号" clearable  :readonly="ro.xinghao"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="型号" prop="xinghao" >
-					<el-input v-model="ruleForm.xinghao" placeholder="型号" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="date" v-if="type!='info'" label="事故时间" prop="shigushijian" >
-					<el-date-picker
-						value-format="yyyy-MM-dd HH:mm:ss"
-						v-model="ruleForm.shigushijian" 
-						type="datetime"
-						:readonly="ro.shigushijian"
-						placeholder="事故时间"
-					></el-date-picker>
-				</el-form-item>
-				<el-form-item class="input" v-else-if="ruleForm.shigushijian" label="事故时间" prop="shigushijian" >
-					<el-input v-model="ruleForm.shigushijian" placeholder="事故时间" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="事故地点" prop="shigudidian" >
-					<el-input v-model="ruleForm.shigudidian" placeholder="事故地点" clearable  :readonly="ro.shigudidian"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="事故地点" prop="shigudidian" >
-					<el-input v-model="ruleForm.shigudidian" placeholder="事故地点" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="select" v-if="type!='info'"  label="事故类型" prop="shiguleixing" >
-					<el-select :disabled="ro.shiguleixing" v-model="ruleForm.shiguleixing" placeholder="请选择事故类型" >
-						<el-option
-							v-for="(item,index) in shiguleixingOptions"
-							v-bind:key="index"
-							:label="item"
-							:value="item">
-						</el-option>
-					</el-select>
-				</el-form-item>
-				<el-form-item v-else class="input" label="事故类型" prop="shiguleixing" >
-					<el-input v-model="ruleForm.shiguleixing"
-						placeholder="事故类型" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="upload" v-if="type!='info' && !ro.xianchangzhaopian" label="现场照片" prop="xianchangzhaopian" >
-					<file-upload
-						tip="点击上传现场照片"
-						action="file/upload"
-						:limit="3"
-						:multiple="true"
-						:fileUrls="ruleForm.xianchangzhaopian?ruleForm.xianchangzhaopian:''"
-						@change="xianchangzhaopianUploadChange"
-					></file-upload>
-				</el-form-item>
-				<el-form-item class="upload" v-else-if="ruleForm.xianchangzhaopian" label="现场照片" prop="xianchangzhaopian" >
-					<img v-if="ruleForm.xianchangzhaopian.substring(0,4)=='http'&&ruleForm.xianchangzhaopian.split(',w').length>1" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.xianchangzhaopian" width="100" height="100">
-					<img v-else-if="ruleForm.xianchangzhaopian.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.xianchangzhaopian.split(',')[0]" width="100" height="100">
-					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.xianchangzhaopian.split(',')" :src="$base.url+item" width="100" height="100">
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="车商账号" prop="cheshangzhanghao" >
-					<el-input v-model="ruleForm.cheshangzhanghao" placeholder="车商账号" clearable  :readonly="ro.cheshangzhanghao"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="车商账号" prop="cheshangzhanghao" >
-					<el-input v-model="ruleForm.cheshangzhanghao" placeholder="车商账号" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="用户账号" prop="yonghuzhanghao" >
-					<el-input v-model="ruleForm.yonghuzhanghao" placeholder="用户账号" clearable  :readonly="ro.yonghuzhanghao"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="用户账号" prop="yonghuzhanghao" >
-					<el-input v-model="ruleForm.yonghuzhanghao" placeholder="用户账号" readonly></el-input>
-				</el-form-item>
-				<el-form-item class="input" v-if="type!='info'"  label="用户姓名" prop="yonghuxingming" >
-					<el-input v-model="ruleForm.yonghuxingming" placeholder="用户姓名" clearable  :readonly="ro.yonghuxingming"></el-input>
-				</el-form-item>
-				<el-form-item v-else class="input" label="用户姓名" prop="yonghuxingming" >
-					<el-input v-model="ruleForm.yonghuxingming" placeholder="用户姓名" readonly></el-input>
-				</el-form-item>
-			</template>
-			<el-form-item class="textarea" v-if="type!='info'" label="事故描述" prop="shigumiaoshu" >
-				<el-input
-					style="min-width: 200px; max-width: 600px;"
-					type="textarea"
-					:rows="8"
-					placeholder="事故描述"
-					v-model="ruleForm.shigumiaoshu" >
-				</el-input>
-			</el-form-item>
-			<el-form-item v-else-if="ruleForm.shigumiaoshu" label="事故描述" prop="shigumiaoshu" >
-				<span class="text">{{ruleForm.shigumiaoshu}}</span>
-			</el-form-item>
-			<el-form-item class="btn">
-				<el-button class="btn3"  v-if="type!='info'" type="success" @click="onSubmit">
-					<span class="icon iconfont icon-xihuan"></span>
-					确定
-				</el-button>
-				<el-button class="btn4" v-if="type!='info'" type="success" @click="back()">
-					<span class="icon iconfont icon-xihuan"></span>
-					取消
-				</el-button>
-				<el-button class="btn5" v-if="type=='info'" type="success" @click="back()">
-					<span class="icon iconfont icon-xihuan"></span>
-					返回
-				</el-button>
-			</el-form-item>
-		</el-form>
-    
-
+			</el-form>
+		</template>
 	</div>
 </template>
 <script>

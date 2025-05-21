@@ -85,65 +85,52 @@
 					class="tables"
 					:stripe="true"
 					:size="tableSize"
-					:style="{padding:'0',borderColor:'#ebeef5',borderRadius:'12px',borderWidth:'1px',background:'#fff',width:'100%',fontSize:'12px',borderStyle:'solid',maxWidth:'100vw',tableLayout:'fixed'}"
+					:style="{padding:'0',borderColor:'#ebeef5',borderRadius:'12px',borderWidth:'1px',background:'#fff',width:'100%',fontSize:'14px',borderStyle:'solid',maxWidth:'100vw',tableLayout:'fixed'}"
 					:border="false"
 					v-if="isAuth('dingdanquxiao','查看')"
 					:data="dataList"
 					v-loading="dataListLoading"
 					@selection-change="selectionChangeHandler"
-					:header-cell-style="{'color':'#333', 'fontWeight':'500', 'fontSize':'12px', 'background-color':'#f5f7fa', 'padding':'4px 0', 'text-align': 'center'}"
-					:cell-style="{'color':'#333', 'fontSize':'12px', 'padding':'4px 0', 'text-align': 'center'}"
+					:header-cell-style="{'color':'#333', 'fontWeight':'600', 'fontSize':'14px', 'background-color':'#f5f7fa', 'padding':'14px 10px', 'text-align': 'center', 'vertical-align': 'middle', 'border-bottom': '2px solid #dcdfe6'}"
+					:cell-style="{'color':'#333', 'fontSize':'14px', 'padding':'14px 10px', 'text-align': 'center', 'vertical-align': 'middle'}"
 				>
-					<el-table-column type="selection" align="center" width="30" />
-					<el-table-column label="序号" type="index" width="30" align="center" :index="indexMethod" />
-					<el-table-column prop="dingdanbianhao" label="订单编号" align="center" width="60" show-overflow-tooltip>
+					<el-table-column type="selection" align="center" min-width="50" />
+					<el-table-column prop="dingdanbianhao" label="订单编号" align="center" min-width="115">
 						<template slot-scope="scope">
 							<span>{{scope.row.dingdanbianhao}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column prop="qichechepai" label="车牌" align="center" width="50" show-overflow-tooltip>
+					<el-table-column prop="qichechepai" label="车牌" align="center" min-width="110">
 						<template slot-scope="scope">
 							<span>{{scope.row.qichechepai}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column prop="qicheleixing" label="类型" align="center" width="50" show-overflow-tooltip>
+					<el-table-column prop="qicheleixing" label="类型" align="center" min-width="110">
 						<template slot-scope="scope">
 							<el-tag size="mini" type="info" effect="light">{{scope.row.qicheleixing}}</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column prop="qichetupian" label="图" align="center" width="32">
-						<template slot-scope="scope">
-							<div v-if="scope.row.qichetupian" class="image-container">
-								<el-image
-									:src="scope.row.qichetupian && scope.row.qichetupian.substring(0,4)=='http' ? 
-										(scope.row.qichetupian.split(',w').length>1 ? scope.row.qichetupian : scope.row.qichetupian.split(',')[0]) 
-										: $base.url+scope.row.qichetupian.split(',')[0]"
-									style="width:20px;height:20px;border-radius:2px;object-fit:cover;"
-								></el-image>
-							</div>
-						</template>
-					</el-table-column>
-					<el-table-column prop="zucheshijian" label="租车" align="center" width="60" show-overflow-tooltip>
+					<el-table-column prop="zucheshijian" label="租车时间" align="center" min-width="110">
 						<template slot-scope="scope">
 							<span>{{scope.row.zucheshijian}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column prop="quxiaoshijian" label="取消" align="center" width="60" show-overflow-tooltip>
+					<el-table-column prop="quxiaoshijian" label="取消时间" align="center" min-width="110">
 						<template slot-scope="scope">
 							<span>{{scope.row.quxiaoshijian}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column prop="quxiaoyuanyin" label="原因" align="center" width="50" show-overflow-tooltip>
+					<el-table-column prop="quxiaoyuanyin" label="取消原因" align="center" min-width="110">
 						<template slot-scope="scope">
 							<span>{{scope.row.quxiaoyuanyin}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column prop="yonghuzhanghao" label="账号" align="center" width="50" show-overflow-tooltip>
+					<el-table-column prop="yonghuzhanghao" label="账号" align="center" min-width="110">
 						<template slot-scope="scope">
 							<span>{{scope.row.yonghuzhanghao}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column label="操作" align="center" width="70">
+					<el-table-column label="操作" align="center" min-width="90">
 						<template slot-scope="scope">
 							<el-button type="text" icon="el-icon-view" size="mini" v-if="isAuth('dingdanquxiao','查看')" @click="addOrUpdateHandler(scope.row.id,'info')" class="view-btn">查看</el-button>
 							<el-button type="text" icon="el-icon-edit" size="mini" v-if="isAuth('dingdanquxiao','修改')" @click="addOrUpdateHandler(scope.row.id)" class="edit-btn">修改</el-button>
@@ -1059,5 +1046,24 @@
 	.main-content .custom-pagination .el-pager li.active {
 		background-color: #409EFF;
 		color: #ffffff;
+	}
+	.el-table /deep/ th, .el-table /deep/ td {
+		vertical-align: middle !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		font-size: 14px !important;
+		box-sizing: border-box;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
+
+	.el-table /deep/ th .cell, .el-table /deep/ td .cell {
+		display: flex;
+		align-items: center;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0 !important;
 	}
 </style>
